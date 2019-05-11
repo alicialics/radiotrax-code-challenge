@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Table } from "reactstrap";
-import { devicesSlice } from "../devicesSlice";
+import { loadDevices } from "../devicesSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export const DeviceTable = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(devicesSlice.actions.loadDevices());
+    dispatch(loadDevices());
   }, [dispatch]);
   const data = useSelector(state => state.devices);
 
