@@ -1,5 +1,5 @@
 import { configureStore } from "redux-starter-kit";
-import { devicesSlice } from "./devicesReducer";
+import { devicesSlice } from "./devicesSlice";
 
 export const store = configureStore({
   reducer: {
