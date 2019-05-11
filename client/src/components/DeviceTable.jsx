@@ -1,6 +1,7 @@
 import React from "react";
 import { Table } from "reactstrap";
 
+
 export const DeviceTable = () => {
   const data = [
     {
