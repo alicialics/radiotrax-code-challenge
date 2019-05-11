@@ -1,14 +1,20 @@
 import React, { useEffect } from "react";
 import { Table } from "reactstrap";
-import { loadDevices } from "../devicesSlice";
+import { loadDevices } from "../reducers/devicesSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export const DeviceTable = () => {
+  // Use new redux hooks features, https://react-redux.js.org/next/api/hooks.
+
+  // useDispatch gets the dispatch function used to dispatch redux actions.
   const dispatch = useDispatch();
 
+  // useEffect loads devices if necessary.
   useEffect(() => {
     dispatch(loadDevices());
   }, [dispatch]);
+
+  // useSelector gets the devices from redux state.
   const data = useSelector(state => state.devices);
 
   return (
