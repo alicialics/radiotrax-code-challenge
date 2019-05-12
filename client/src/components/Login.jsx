@@ -43,11 +43,12 @@ export const Login = () => {
                   invalid={!isUserNameValid}
                   name="username"
                   id="username"
+                  data-testid="username"
                   value={user}
                   onChange={event => setUser(event.currentTarget.value)}
                   placeholder="Username"
                 />
-                <FormFeedback>{userNameFeedback}</FormFeedback>
+                <FormFeedback data-testid="username-feedback">{userNameFeedback}</FormFeedback>
               </FormGroup>
               <FormGroup>
                 <Label>Password</Label>
@@ -56,13 +57,14 @@ export const Login = () => {
                   type="password"
                   name="password"
                   id="password"
+                  data-testid="password"
                   value={password}
                   onChange={event => setPassword(event.currentTarget.value)}
                   placeholder="Password"
                 />
                 <FormFeedback>{passwordFeedback}</FormFeedback>
               </FormGroup>
-              <Button color="primary" onClick={() => logIn(user, password)}>
+              <Button data-testid="login" color="primary" onClick={() => logIn(user, password)}>
                 LOG IN
               </Button>
             </Form>
