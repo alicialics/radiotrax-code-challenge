@@ -37,17 +37,17 @@ function App() {
         logout
       }}
     >
-      <Navbar color="light" light expand="md">
+      <Navbar dark expand="sm" style={{ backgroundColor: "#3498DB" }}>
         <NavbarBrand href="/">Devices</NavbarBrand>
         <Nav className="ml-auto" navbar>
           {user && (
             <NavItem>
-              <NavLink onClick={logout}>Log Out</NavLink>
+              <NavLink href="#" onClick={logout}>Log Out</NavLink>
             </NavItem>
           )}
         </Nav>
       </Navbar>
-      {isError && <Alert color="danager">Authorization Failed</Alert>}
+      {isError && <Alert color="danger">Authorization Failed</Alert>}
       {user && !isError ? <DeviceTable /> : <Login />}
     </UserContext.Provider>
   );
