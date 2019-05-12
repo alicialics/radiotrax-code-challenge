@@ -41,7 +41,7 @@ function App() {
         <Nav className="ml-auto" navbar>
           {user && (
             <NavItem>
-              <NavLink href="#" onClick={logout}>Log Out</NavLink>
+              <NavLink href="#" data-testid="logout" onClick={logout}>Log Out</NavLink>
             </NavItem>
           )}
         </Nav>

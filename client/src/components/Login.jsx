@@ -38,7 +38,7 @@ export const Login = () => {
             <CardTitle>Cognosos Log In</CardTitle>
             <Form className={styles.form}>
               <FormGroup>
-                <Label>User Name</Label>
+                <Label>Username</Label>
                 <Input
                   invalid={!isUserNameValid}
                   name="username"
