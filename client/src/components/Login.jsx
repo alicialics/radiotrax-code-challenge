@@ -1,41 +1,58 @@
 import React, { useState, useContext } from "react";
 import {
+  Label,
   Container,
   Row,
   Col,
   Card,
-  CardBody,
   CardTitle,
   Form,
   FormGroup,
   Input,
-  Button
+  Button,
+  FormFeedback
 } from "reactstrap";
 import { UserContext } from "../UserContext";
 import styles from "./Login.module.css";
+import { validateUserName, validatePassword } from "../util/validate";
 
 export const Login = () => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
+  const [didSubmit, setDidSubmit] = useState(false);
   const context = useContext(UserContext);
+  const [isUserNameValid, userNameFeedback] = validateUserName(user, didSubmit);
+  const [isPasswordValid, passwordFeedback] = validatePassword(password, didSubmit);
+  const logIn = (user, password) => {
+    setDidSubmit(true);
+    if (isUserNameValid && isPasswordValid && user && password) {
+      context.login(user, password);
+    }
+  };
+
   return (
     <Container>
       <Row className={styles.row}>
         <Col xs="9" md="7" lg="5">
           <Card body className={styles.loginCard}>
-            <CardTitle>Log In To Cognosos</CardTitle>
+            <CardTitle>Cognosos Log In</CardTitle>
             <Form className={styles.form}>
               <FormGroup>
+                <Label>User Name</Label>
                 <Input
-                  name="user"
-                  id="user"
+                  invalid={!isUserNameValid}
+                  name="username"
+                  id="username"
                   value={user}
                   onChange={event => setUser(event.currentTarget.value)}
                   placeholder="Username"
                 />
+                <FormFeedback>{userNameFeedback}</FormFeedback>
               </FormGroup>
               <FormGroup>
+                <Label>Password</Label>
                 <Input
+                  invalid={!isPasswordValid}
                   type="password"
                   name="password"
                   id="password"
@@ -43,11 +60,9 @@ export const Login = () => {
                   onChange={event => setPassword(event.currentTarget.value)}
                   placeholder="Password"
                 />
+                <FormFeedback>{passwordFeedback}</FormFeedback>
               </FormGroup>
-              <Button
-                color="primary"
-                onClick={() => context.login(user, password)}
-              >
+              <Button color="primary" onClick={() => logIn(user, password)}>
                 LOG IN
               </Button>
             </Form>
