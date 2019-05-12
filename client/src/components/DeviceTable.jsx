@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Table } from "reactstrap";
-import { loadDevices } from "../reducers/devicesSlice";
+import { fetchDevices } from "../reducers/devicesSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export const DeviceTable = () => {
@@ -11,11 +11,16 @@ export const DeviceTable = () => {
 
   // useEffect loads devices if necessary.
   useEffect(() => {
-    dispatch(loadDevices());
+    dispatch(fetchDevices());
   }, [dispatch]);
 
   // useSelector gets the devices from redux state.
   const data = useSelector(state => state.devices);
+  const options = useSelector(state => state.deviceOptions);
+  const { isLoading } = options;
+  if (isLoading) {
+    return null;
+  }
 
   return (
     <Table striped>
