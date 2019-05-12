@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "reactstrap";
 
 export const SortButton = props => {
   const { isActive, onClick } = props;

@@ -23,6 +23,7 @@ export const deviceOptionsSlice = createSlice({
     },
     setFilterBy: (state, action) => {
       state.filterBy = action.payload;
+      state.page = 0;
     },
     setIsLoading: (state, action) => {
       state.isLoading = !!action.payload;
