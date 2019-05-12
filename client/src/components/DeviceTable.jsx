@@ -31,7 +31,6 @@ export const DeviceTable = () => {
   const { isLoading, page, orderBy, filterBy } = options;
 
   const filteredData = useMemo(() => {
-    console.log(orderBy);
     const filteredData = data.filter(
       item =>
         !filterBy ||
@@ -137,7 +136,7 @@ export const DeviceTable = () => {
               ))}
             </tbody>
           </Table>
-          <Pagination>
+          <Pagination style={{ display: "flex", justifyContent: "center" }}>
             <PaginationItem disabled={isFirstPage}>
               <PaginationLink first onClick={() => gotoPage(0)} />
             </PaginationItem>

@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Login } from "./components/Login";
 import { DeviceTable } from "./components/DeviceTable";
 import { Alert, Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
-import "./App.css";
 import { UserContext } from "./UserContext";
 import { deviceOptionsSlice } from "./reducers/devicesSlice";
 
